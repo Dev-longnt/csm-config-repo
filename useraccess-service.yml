@@ -1,0 +1,55 @@
+server:
+  port: 8003
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${SPRING_DATA_URI:jdbc:postgresql://54.254.209.228:5432/csm_user}
+    username: ${SPRING_DATA_USERNAME:admin}
+    password: ${SPRING_DATA_PASSWORD:admin123}
+    hikari:
+      pool-name: MyHikariCP
+      maximum-pool-size: 20
+      minimum-idle: 5
+      idle-timeout: 300000      # 5 ph�t
+      max-lifetime: 1800000     # 30 ph�t
+      connection-timeout: 30000 # 30 gi�y
+      auto-commit: true
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.xml
+  ldap:
+    urls: ${LDAP_URLS:ldap://54.254.209.228:389}
+    base: ${LDAP_BASE:dc=fecredit,dc=com,dc=vn}
+    username: ${LDAP_USERNAME:cn=admin,dc=fecredit,dc=com,dc=vn}
+    password: ${LDAP_PASSWORD:long123}
+    user-dn-patterns:
+      - ${LDAP_USER_DN_PATTERNS:uid={0},ou=people}
+    group-search-base: ${LDAP_GROUP_SEARCH_BASE:ou=groups}
+
+application:
+  header: ${JWT_HEADER_NAME:Authorization}
+  token:
+    prefix: ${JWT_TOKEN_PREFIX:Bearer }
+  security:
+    jwt:
+      expiration: ${JWT_EXPIRATION:86400000} # a day
+      refresh-token:
+        expiration: ${JWT_REFRESH_EXPIRATION:604800000} # 7 days
+      pre-auth-token:
+        expiration: ${JWT_PRE_AUTH_EXPIRATION:300000} # 5 minutes
+
+csm:
+  jwt:
+    issuer: csm-auth-service
+
+# Cấu hình Jasypt
+jasypt:
+  encryptor:
+    password: ${JASYPT_ENCRYPTOR_PASSWORD:your-strong-secret-password-for-dev}
+    algorithm: PBEWithMD5AndDES
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator

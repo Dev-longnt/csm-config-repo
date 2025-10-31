@@ -1,0 +1,16 @@
+server:
+  port: 8084
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://admin:admin123@54.254.209.228:27017/case_service_db?authSource=admin
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          public-key-location: classpath:public.pem
+
+mongock:
+  change-logs-scan-package: com.csm.caseservice.config
