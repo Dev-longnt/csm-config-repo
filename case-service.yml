@@ -12,5 +12,11 @@ spring:
         jwt:
           public-key-location: classpath:public.pem
 
+  rabbitmq:
+    host: ${RABBITMQ_HOST:54.254.209.228}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USERNAME:admin}
+    password: ${RABBITMQ_PASSWORD:admin123}
+
 mongock:
   change-logs-scan-package: com.csm.caseservice.config
