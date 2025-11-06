@@ -20,7 +20,3 @@ spring:
 
 mongock:
   change-logs-scan-package: com.csm.caseservice.config
-
-grpc:
-  server:
-    port: 9090
