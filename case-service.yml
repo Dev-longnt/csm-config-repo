@@ -22,5 +22,21 @@ spring:
     template:
       mandatory: true
 
+camunda.bpm.client:
+  base-url: http://localhost:8080/engine-rest # the URL pointing to the Camunda Platform Runtime REST API
+  lock-duration: 10000 # defines how many milliseconds the External Tasks are locked until they can be fetched again
+  subscriptions:
+    DR_Post_Capture_Request: # topic name of the External Service Task
+      variable-names: SubCategory, 
+      process-definition-key: DOCUMENT_REQUEST # only filter for External Tasks with this process definition key
+    DR_Resolve_Case:
+      variable-names: []
+      process-definition-key: DOCUMENT_REQUEST
+    DR_Reject_Stage:
+      variable-names: []
+      process-definition-key: DOCUMENT_REQUEST
+
+logging.level.org.camunda.bpm.client: DEBUG # increase the log level of the application
+
 mongock:
   change-logs-scan-package: com.csm.caseservice.config
