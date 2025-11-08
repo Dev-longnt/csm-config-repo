@@ -37,6 +37,8 @@ camunda.bpm.client:
       process-definition-key: DOCUMENT_REQUEST
 
 logging.level.org.camunda.bpm.client: DEBUG # increase the log level of the application
+# Bật log cho MongoTemplate để xem query và kết quả
+logging.level.org.springframework.data.mongodb.core.MongoTemplate=DEBUG
 
 mongock:
   change-logs-scan-package: com.csm.caseservice.config
