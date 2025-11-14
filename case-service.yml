@@ -22,7 +22,7 @@ spring:
     template:
       mandatory: true
   kafka:
-    bootstrap-servers: 54.254.209.228:9096  # Assuming container name is kafka1
+    bootstrap-servers: 54.254.209.228:9095  # Assuming container name is kafka1
     producer:
       retries: 0
       batch-size: 16384
