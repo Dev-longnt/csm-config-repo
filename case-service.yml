@@ -5,6 +5,9 @@ spring:
   data:
     mongodb:
       uri: mongodb://admin:admin123@54.254.209.228:27017/case_service_db?authSource=admin&replicaSet=rs0
+    elasticsearch:
+      repositories:
+        enabled: true
 
   security:
     oauth2:
